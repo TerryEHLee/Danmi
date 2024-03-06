@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Danmi Pilates Admin",
@@ -15,7 +15,7 @@ export default function RootLayout({
     <html>
       <body>
         <h1>
-          <a href='/'>Danmi</a>
+          <a href="/">Danmi</a>
         </h1>
         {children}
       </body>

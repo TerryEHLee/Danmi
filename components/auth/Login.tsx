@@ -50,8 +50,8 @@ const Login: React.FC = () => {
               {...register("password", {
                 required: "비밀번호를 입력하세요",
                 minLength: {
-                  value: 6,
-                  message: "비밀번호는 최소 8자리 이상이어야 합니다",
+                  value: 4,
+                  message: "비밀번호는 최소 4자리 이상이어야 합니다",
                 },
               })}
               className="flex w-80 h-12 p-4 items-center border rounded-xl bg-gray-50 mb-1 outline-none text-sm"
