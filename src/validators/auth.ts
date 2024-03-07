@@ -20,3 +20,8 @@ export const registerSchema = z.object({
   gender: z.string().min(2, { message: "성별을 선택하세요" }),
   tutor: z.string().min(2, { message: "강사를 선택하세요" }),
 });
+
+export const loginSchema = z.object({
+  name: z.string().min(2, { message: "정확한 이름을 입력하세요." }),
+  password: z.string().min(4, { message: "정확한 비밀번호를 입력하세요." }),
+});
