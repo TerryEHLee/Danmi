@@ -13,12 +13,12 @@ async function getData(): Promise<Member[]> {
       id: "a001",
       name: "은은한",
       status: "회원",
-      joinDate: "03.13",
-      endDate: "12.13",
+      joinDate: "24.03.13",
+      endDate: "24.12.13",
       remainClass: "개인:1, 그룹:10",
       tutor: "이연지T",
       phoneNumber: "01012345656",
-      history: "03.13. 화 19:00 이연지T chair 그룹",
+      history: "24.03.13. 화 19:00 이연지T chair 그룹",
     },
   ];
 }
