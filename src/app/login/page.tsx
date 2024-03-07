@@ -1,5 +1,6 @@
 "use client";
-import Login from "../../../components/auth/Login";
+
+import { Login } from "@/components/auth/login";
 
 const login = () => {
   return (
