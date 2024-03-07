@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Image from "next/image";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/mode-toggle";
+import { NavigationMenuDemo } from "@/components/Header/menu";
 
 // export const metadata: Metadata = {
 //   title: "Danmi Pilates",
@@ -17,30 +18,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <body className="mt-5 ml-6">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <h1>
-            <a href="/">
-              <Image
-                src="/logo.svg"
-                alt="Danmi Logo"
-                width={50}
-                height={2}
-                priority
-              />
-            </a>
-          </h1>
-          <ModeToggle className={"absolute top-6 right-6"} />
+    <>
+      <html>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="mt-5 ml-6">
+              <div className="flex justify-center">
+                <a href="/">
+                  <Image
+                    className="absolute left-6"
+                    src="/logo.svg"
+                    alt="Danmi Logo"
+                    width={50}
+                    height={2}
+                    priority
+                  />
+                </a>
 
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+                <NavigationMenuDemo />
+
+                <ModeToggle className={"absolute top-6 right-6"} />
+              </div>
+            </div>
+          </ThemeProvider>
+          <div className="mt-10 ml-6">{children}</div>
+        </body>
+      </html>
+    </>
   );
 }
