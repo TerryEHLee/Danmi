@@ -7,9 +7,9 @@ export type Member = {
   name: string;
   status: "회원" | "만료회원";
   joinDate: string;
-  classDay: string;
+  endDate: string;
   remainClass: string;
-  tutor: "원장님" | "은지T";
+  tutor: "이연지T" | "이은지T";
   phoneNumber: string;
   history: string;
 };
@@ -17,11 +17,15 @@ export type Member = {
 export const columns: ColumnDef<Member>[] = [
   {
     accessorKey: "status",
-    header: "Status",
+    header: "구분",
   },
   {
     accessorKey: "name",
     header: "이름",
+  },
+  {
+    accessorKey: "phoneNumber",
+    header: "전화번호",
   },
   {
     accessorKey: "remainClass",
@@ -29,20 +33,17 @@ export const columns: ColumnDef<Member>[] = [
   },
   {
     accessorKey: "tutor",
-    header: "담당선생님",
-  },
-  {
-    accessorKey: "classDay",
-    header: "수업일",
+    header: "담당강사",
   },
   {
     accessorKey: "joinDate",
-    header: "등록날짜",
+    header: "등록일",
   },
   {
-    accessorKey: "phoneNumber",
-    header: "number",
+    accessorKey: "endDate",
+    header: "만료일",
   },
+
   {
     accessorKey: "history",
     header: "히스토리",

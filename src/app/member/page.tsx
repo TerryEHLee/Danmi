@@ -11,14 +11,14 @@ async function getData(): Promise<Member[]> {
   return [
     {
       id: "a001",
-      name: "회원0",
+      name: "은은한",
       status: "회원",
       joinDate: "03.13",
-      classDay: "화, 목",
+      endDate: "12.13",
       remainClass: "개인:1, 그룹:10",
-      tutor: "원장님",
+      tutor: "이연지T",
       phoneNumber: "01012345656",
-      history: "03.13. 화 19:00 원장님 chairroom 그룹",
+      history: "03.13. 화 19:00 이연지T chair 그룹",
     },
   ];
 }
