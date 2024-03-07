@@ -54,11 +54,8 @@ export function Login() {
 
   return (
     <>
-      <Card className="w-[380px]">
-        <CardHeader>
-          <CardTitle>계정을 생성합니다</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <Card className="w-[380px] mt-10">
+        <CardContent className="mt-7">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -70,7 +67,6 @@ export function Login() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>이름</FormLabel>
                       <FormControl>
                         <Input placeholder="이름을 입력하세요" {...field} />
                       </FormControl>
@@ -83,9 +79,12 @@ export function Login() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>비밀번호</FormLabel>
                       <FormControl>
-                        <Input placeholder="비밀번호를 입력하세요" {...field} />
+                        <Input
+                          type="password"
+                          placeholder="비밀번호를 입력하세요"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
