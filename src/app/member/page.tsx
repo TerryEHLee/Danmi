@@ -23,7 +23,7 @@ async function getData(): Promise<Member[]> {
   ];
 }
 
-const member = () => {
+const Member = () => {
   const [data, setData] = useState<Member[]>([]);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
@@ -56,4 +56,4 @@ const member = () => {
   );
 };
 
-export default member;
+export default Member;
