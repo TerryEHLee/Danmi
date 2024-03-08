@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { NavigationMenuDemo } from "@/components/Header/menu";
+import Footer from "@/components/footer/footer";
 
 // export const metadata: Metadata = {
 //   title: "Danmi Pilates",
@@ -47,6 +48,9 @@ export default function RootLayout({
             </div>
           </ThemeProvider>
           <div className="mt-10 ml-6">{children}</div>
+          <footer className="fixed bottom-0 mb-10 ml-6">
+            <Footer />
+          </footer>
         </body>
       </html>
     </>
