@@ -35,7 +35,7 @@ import React, { useState } from "react";
 
 type RegisterInput = z.infer<typeof registerSchema>;
 
-export function AddMember({ onClose }) {
+export function AddMember({ onClose }: { onClose: () => void }) {
   const form = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
