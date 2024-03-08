@@ -1,6 +1,5 @@
 "use client";
 
-import Layout from "@/components/timetable/layout";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
