@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 서비스
+회원 관리 및 회원들에게 자신의 다음 수업 일정, 수업이력, 잔여수업 등의 정보제공 서비스
 
-## Getting Started
+## figma:
+https://www.figma.com/file/aDv7EUWO6WMo90nCJvC3ri/Danmi?type=whiteboard&node-id=0-1&t=NRGgk7CbHT5FkjHh-0
 
-First, run the development server:
+## 개발일정:
+24.01.25 ~ 진행중(4월에 정식 시작 예정)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 개발인원:
+FE 1인, BE 1인 (2인)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 기술스택:
+next.js, typescript, Nest.js, figma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## MVP 스팩
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+* 로그인
+  편리한 로그인을 위해 전화번호 4자리가 비밀번호
+  로그인 시, 회원과 관리자 강사에게 보여지는 화면이 다름
 
-## Learn More
+* 매인
+  관리자(강사): 오늘의 수업 스케쥴표시, 만료일이 다가오는 회원 목록 표시
+  회원: 오늘의 수업 일정 확인, 수업 들은 후 수업상태변경(수업예정, 수업완료), 다음 수업 일정 확인, 자신의 수업내역 확인
 
-To learn more about Next.js, take a look at the following resources:
+* 수업관리(관리자만)
+  캘린더에 수업등록(회원, 강사, 장소, 인원)
+  수업상태 변경(수업예정, 수업완료, 노쇼)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* 회원관리(관리자만)
+  회원(강사)추가: 회원정보 입력 후 추가
+  회원정보확인(잔여일, 만료일, 수업내역 ...)
+  회원에게 수업권부여
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+* 결제시스템(관리자만)
+  결제진행(신용카드, 스마트결제...)
+  쿠폰 및 포인트 관리
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* 매출관리(추후개발계획)

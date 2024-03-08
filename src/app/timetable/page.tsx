@@ -1,7 +1,13 @@
+"use client";
+
+import Timetable from "@/components/timetable/timetable";
+
 const timetable = () => {
   return (
     <>
-      <div>시간표</div>
+      <div>
+        <Timetable />
+      </div>
     </>
   );
 };
