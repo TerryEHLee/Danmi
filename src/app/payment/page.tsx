@@ -1,9 +1,11 @@
-const teacher = () => {
+import { Payment } from "@/components/payment/Payment";
+
+const paymentPage = () => {
   return (
     <>
-      <div>선생님관리</div>
+      <Payment />
     </>
   );
 };
 
-export default teacher;
+export default paymentPage;
