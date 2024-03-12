@@ -1,0 +1,11 @@
+{
+  "users": [{ "id": 1, "name": "강동원", "coupon": "10%", "point": "1000" }]
+}
+
+// fetch('http://localhost:7777/users')
+// .then((resp)=>{
+//   return resp.json()
+// })
+// .then(result=>{
+//   console.log('result', result)
+// })
