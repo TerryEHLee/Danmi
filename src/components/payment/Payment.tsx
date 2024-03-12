@@ -20,8 +20,32 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { paymentSchema, registerSchema } from "@/validators/auth";
+import { useForm } from "react-hook-form";
+
+type PaymentInput = z.infer<typeof paymentSchema>;
 
 export function Payment() {
+  const form = useForm<PaymentInput>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      classPrice: "",
+      coupon: "",
+      point: "",
+      totalPrice: "",
+    },
+  });
+
   const [selectedLessonType, setSelectedLessonType] = useState<string | null>(
     null,
   );
@@ -29,6 +53,10 @@ export function Payment() {
   const handleLessonTypeClick = (lessonType: string) => {
     setSelectedLessonType(lessonType);
   };
+
+  function onSubmit(data: PaymentInput) {
+    alert(JSON.stringify(data, null, 4));
+  }
 
   return (
     <>
@@ -137,14 +165,119 @@ export function Payment() {
         <div>
           <Card className="w-[350px]">
             <CardContent>
-              <form>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="name">결제금액</Label>
-                    <Input id="name" placeholder="Name of your project" />
+              <CardHeader>
+                <CardTitle>결제금액</CardTitle>
+                <CardDescription>
+                  <div className="flex justify-between mt-2">
+                    <div>수업가격</div>
+                    <div className="mr-4">250000</div>
                   </div>
-                </div>
-              </form>
+                  <div className="flex justify-between">
+                    <div>쿠폰할인</div>
+                    <div className="mr-4">250000</div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div>포인트 사용</div>
+                    <div className="mr-4">250000</div>
+                  </div>
+                  <br />
+                  <div className="flex justify-between">
+                    <strong>최종 결제금액</strong>
+                    <strong className="mr-4">250000</strong>
+                  </div>
+                </CardDescription>
+              </CardHeader>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+      <div className="flex">
+        <div>
+          <Card className="w-[700px]">
+            <CardHeader>
+              <CardTitle>쿠폰 & 포인트</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="relative space-y-3 overflow-x-hidden"
+                >
+                  <FormField
+                    control={form.control}
+                    name="coupon"
+                    render={({ field }) => (
+                      <FormItem>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="쿠폰 사용하기" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="coupon10">
+                              10% 할인쿠폰
+                            </SelectItem>
+                            <SelectItem value="coupon20">
+                              20% 할인쿠폰
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="flex">
+                    <FormField
+                      control={form.control}
+                      name="point"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>사용할 포인트를 입력하세요</FormLabel>
+                          <FormControl>
+                            <Input placeholder="보유포인트: 5000" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <CardFooter className="flex justify-between">
+                      <Button variant="outline">전액사용</Button>
+                    </CardFooter>
+                  </div>
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        </div>
+        <div>
+          <Card className="w-[350px]">
+            <CardContent>
+              <CardHeader>
+                <CardTitle>결제수단</CardTitle>
+                <CardDescription>
+                  <div className="flex justify-between mt-2">
+                    <div>수업가격</div>
+                    <div className="mr-4">250000</div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div>쿠폰할인</div>
+                    <div className="mr-4">250000</div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div>포인트 사용</div>
+                    <div className="mr-4">250000</div>
+                  </div>
+                  <br />
+                  <div className="flex justify-between">
+                    <strong>최종 결제금액</strong>
+                    <strong className="mr-4">250000</strong>
+                  </div>
+                </CardDescription>
+              </CardHeader>
             </CardContent>
           </Card>
         </div>
