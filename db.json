@@ -16,11 +16,11 @@
     {
       "id": "e2cf",
       "phone": "01000000000",
-      "role": "member",
+      "role": "회원",
       "username": "terry",
       "birthday": "111110",
       "gender": "male",
-      "tutor": "yj"
+      "tutor": "이연지T"
     },
     {
       "id": "011b",
@@ -102,3 +102,5 @@
     }
   ]
 }
+
+// npx json-server --port 7777 --watch db.json
