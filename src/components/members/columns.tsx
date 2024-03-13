@@ -4,27 +4,28 @@ import { ColumnDef } from "@tanstack/react-table";
 
 export type Member = {
   id: string;
-  name: string;
-  status: "회원" | "만료회원";
+  username: string;
+  birthday: string;
+  role: "회원" | "만료회원" | "강사";
   joinDate: string;
   endDate: string;
   remainClass: string;
   tutor: "이연지T" | "이은지T";
-  phoneNumber: string;
+  phone: string;
   history: string;
 };
 
 export const columns: ColumnDef<Member>[] = [
   {
-    accessorKey: "status",
+    accessorKey: "role",
     header: "구분",
   },
   {
-    accessorKey: "name",
+    accessorKey: "username",
     header: "이름",
   },
   {
-    accessorKey: "phoneNumber",
+    accessorKey: "phone",
     header: "전화번호",
   },
   {
