@@ -39,19 +39,8 @@ export function DataTable<TData, TValue>({
     setShowMenu(true);
   };
 
-  const handleMenuItemClick = (action) => {
-    switch (action) {
-      case "회원정보수정":
-        break;
-      case "회원권부여하기":
-        break;
-      case "쿠폰등록":
-        break;
-      case "포인트등록":
-        break;
-      default:
-        break;
-    }
+  const handleChangeStatus = (status) => {
+    console.log(`Changed status to: ${status}`);
     setShowMenu(false);
   };
 
@@ -97,37 +86,6 @@ export function DataTable<TData, TValue>({
                 No results.
               </TableCell>
             </TableRow>
-          )}
-
-          {showMenu && (
-            <div className="absolute z-10 top-full left-0 mt-2 bg-white border rounded-md shadow-md">
-              <ul>
-                <li
-                  onClick={() => handleMenuItemClick("회원정보수정")}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                >
-                  회원정보수정
-                </li>
-                <li
-                  onClick={() => handleMenuItemClick("회원권부여하기")}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                >
-                  회원권부여하기
-                </li>
-                <li
-                  onClick={() => handleMenuItemClick("쿠폰등록")}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                >
-                  쿠폰등록
-                </li>
-                <li
-                  onClick={() => handleMenuItemClick("포인트등록")}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                >
-                  포인트등록
-                </li>
-              </ul>
-            </div>
           )}
         </TableBody>
       </Table>

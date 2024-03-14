@@ -33,3 +33,10 @@ export const paymentSchema = z.object({
   point: z.string(),
   totalPrice: z.string().min(4),
 });
+
+export const dataTableSchema = z.object({
+  memberStatus: z.string(),
+  coupon: z.string(),
+  point: z.string(),
+  class: z.string().min(4),
+});
