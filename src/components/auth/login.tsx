@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-<<<<<<< HEAD
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -107,9 +107,4 @@ export function Login() {
       </Card>
     </>
   );
-=======
-
-export function Login() {
-  return <>Login</>;
->>>>>>> bb459a2 (for change branch)
 }

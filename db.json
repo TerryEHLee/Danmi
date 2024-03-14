@@ -1,7 +1,7 @@
 {
   "memberInfo": [
     {
-      "id": 1,
+      "id": "1",
       "username": "강동원",
       "role": "회원",
       "joinDate": "24.03.13",
@@ -102,5 +102,3 @@
     }
   ]
 }
-
-// npx json-server --port 7777 --watch db.json
