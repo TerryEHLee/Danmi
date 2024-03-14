@@ -36,7 +36,13 @@ import React, { useState } from "react";
 
 type RegisterInput = z.infer<typeof registerSchema>;
 
-export function AddMember({ onClose }: { onClose: () => void }) {
+export function AddMember({
+  onClose,
+  setSelectedRole,
+}: {
+  onClose: () => void;
+  setSelectedRole: React.Dispatch<React.SetStateAction<String>>;
+}) {
   const form = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -56,6 +62,7 @@ export function AddMember({ onClose }: { onClose: () => void }) {
   const [showTutorForm, setShowTutorForm] = useState(false);
   const [members, setMembers] = useState<Member[]>([]);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
+  // const [selectedRole, setSelectedRole] = useState("");
 
   function onSubmit(data: RegisterInput) {
     const options = {
@@ -168,12 +175,8 @@ export function AddMember({ onClose }: { onClose: () => void }) {
                       <Select
                         onValueChange={(value) => {
                           field.onChange(value);
-
-                          if (value === "회원") {
-                            setShowTutorForm(true);
-                          } else {
-                            setShowTutorForm(false);
-                          }
+                          setSelectedRole(value);
+                          setShowTutorForm(value === "회원");
                         }}
                         defaultValue={field.value}
                       >
@@ -234,10 +237,6 @@ export function AddMember({ onClose }: { onClose: () => void }) {
                 "role",
                 "gender",
                 "tutor",
-                "joinDate",
-                "endDate",
-                "remainClass",
-                "history",
               ]);
 
               const phoneState = form.getFieldState("phone");

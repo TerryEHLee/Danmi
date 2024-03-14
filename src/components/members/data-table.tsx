@@ -15,7 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
+import { useState } from "react";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -25,11 +25,24 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const handleRowClick = (rowData) => {
+    setSelectedRow(rowData);
+    setShowMenu(true);
+  };
+
+  const handleChangeStatus = (status) => {
+    console.log(`Changed status to: ${status}`);
+    setShowMenu(false);
+  };
 
   return (
     <div className="rounded-md border">
@@ -58,6 +71,7 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                onClick={() => handleRowClick(row.original)}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
