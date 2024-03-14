@@ -1,0 +1,104 @@
+{
+  "memberInfo": [
+    {
+      "id": "1",
+      "username": "강동원",
+      "role": "회원",
+      "joinDate": "24.03.13",
+      "endDate": "24.12.13",
+      "remainClass": "개인:1, 그룹:10",
+      "tutor": "이연지T",
+      "phone": "01000000000",
+      "history": "24.03.13.수 19:00 이연지T chair 그룹",
+      "coupon": "10%",
+      "point": "1000"
+    },
+    {
+      "id": "e2cf",
+      "phone": "01000000000",
+      "role": "회원",
+      "username": "terry",
+      "birthday": "111110",
+      "gender": "male",
+      "tutor": "이연지T"
+    },
+    {
+      "id": "011b",
+      "phone": "01000000000",
+      "role": "회원",
+      "username": "피카",
+      "birthday": "111110",
+      "gender": "female",
+      "tutor": "이연지T",
+      "joinDate": "",
+      "endDate": "",
+      "remainClass": "",
+      "history": ""
+    },
+    {
+      "id": "42ed",
+      "phone": "01000000000",
+      "role": "회원",
+      "username": "terryehlee",
+      "birthday": "111110",
+      "gender": "male",
+      "tutor": "이연지T",
+      "joinDate": "",
+      "endDate": "",
+      "remainClass": "",
+      "history": ""
+    },
+    {
+      "id": "b836",
+      "phone": "01000000000",
+      "role": "회원",
+      "username": "꼬부기",
+      "birthday": "111110",
+      "gender": "female",
+      "tutor": "이연지T",
+      "joinDate": "",
+      "endDate": "",
+      "remainClass": "",
+      "history": ""
+    },
+    {
+      "id": "de75",
+      "phone": "01000000000",
+      "role": "강사",
+      "username": "왕예삐",
+      "birthday": "111110",
+      "gender": "male",
+      "tutor": "",
+      "joinDate": "",
+      "endDate": "",
+      "remainClass": "",
+      "history": ""
+    },
+    {
+      "id": "59c3",
+      "phone": "01000000000",
+      "role": "회원",
+      "username": "afd",
+      "birthday": "111110",
+      "gender": "male",
+      "tutor": "이연지T",
+      "joinDate": "",
+      "endDate": "",
+      "remainClass": "",
+      "history": ""
+    },
+    {
+      "id": "2944",
+      "phone": "01000000000",
+      "role": "회원",
+      "username": "이름",
+      "birthday": "111110",
+      "gender": "female",
+      "tutor": "이연지T",
+      "joinDate": "",
+      "endDate": "",
+      "remainClass": "",
+      "history": ""
+    }
+  ]
+}

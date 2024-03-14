@@ -1,4 +1,5 @@
 import { z } from "zod";
+import paymentPage from "../app/payment/page";
 
 const phoneRegex = /^010\d{8}$/;
 
@@ -24,4 +25,18 @@ export const registerSchema = z.object({
 export const loginSchema = z.object({
   name: z.string().min(2, { message: "정확한 이름을 입력하세요." }),
   password: z.string().min(4, { message: "정확한 비밀번호를 입력하세요." }),
+});
+
+export const paymentSchema = z.object({
+  classPrice: z.string().min(2, { message: "수업을 선택하세요." }),
+  coupon: z.string(),
+  point: z.string(),
+  totalPrice: z.string().min(4),
+});
+
+export const dataTableSchema = z.object({
+  memberStatus: z.string(),
+  coupon: z.string(),
+  point: z.string(),
+  class: z.string().min(4),
 });

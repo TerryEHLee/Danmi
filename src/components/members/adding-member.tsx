@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Member, columns } from "@/components/members/columns";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,7 +36,13 @@ import React, { useState } from "react";
 
 type RegisterInput = z.infer<typeof registerSchema>;
 
-export function AddMember({ onClose }: { onClose: () => void }) {
+export function AddMember({
+  onClose,
+  setSelectedRole,
+}: {
+  onClose: () => void;
+  setSelectedRole: React.Dispatch<React.SetStateAction<String>>;
+}) {
   const form = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -45,13 +52,35 @@ export function AddMember({ onClose }: { onClose: () => void }) {
       birthday: "",
       gender: "",
       tutor: "",
+      joinDate: "",
+      endDate: "",
+      remainClass: "",
+      history: "",
     },
   });
 
   const [showTutorForm, setShowTutorForm] = useState(false);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
+  // const [selectedRole, setSelectedRole] = useState("");
 
   function onSubmit(data: RegisterInput) {
-    alert(JSON.stringify(data, null, 4));
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    fetch("http://localhost:7777/memberInfo", options)
+      .then((resp) => resp.json())
+      .then((result) => {
+        const lastid = result.id;
+        setMembers([...members, data]);
+        onClose();
+        setIsBtnClicked(false);
+      });
   }
 
   function onCancel() {
@@ -146,12 +175,8 @@ export function AddMember({ onClose }: { onClose: () => void }) {
                       <Select
                         onValueChange={(value) => {
                           field.onChange(value);
-
-                          if (value === "member") {
-                            setShowTutorForm(true);
-                          } else {
-                            setShowTutorForm(false);
-                          }
+                          setSelectedRole(value);
+                          setShowTutorForm(value === "회원");
                         }}
                         defaultValue={field.value}
                       >
@@ -161,8 +186,8 @@ export function AddMember({ onClose }: { onClose: () => void }) {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="member">회원</SelectItem>
-                          <SelectItem value="tutor">강사</SelectItem>
+                          <SelectItem value="회원">회원</SelectItem>
+                          <SelectItem value="강사">강사</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -186,8 +211,8 @@ export function AddMember({ onClose }: { onClose: () => void }) {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="yj">이연지T</SelectItem>
-                            <SelectItem value="ej">이은지T</SelectItem>
+                            <SelectItem value="이연지T">이연지T</SelectItem>
+                            <SelectItem value="이은지T">이은지T</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -219,6 +244,7 @@ export function AddMember({ onClose }: { onClose: () => void }) {
               const usernameState = form.getFieldState("username");
               const roleState = form.getFieldState("role");
               const genderState = form.getFieldState("gender");
+              const joinDateState = "";
 
               if (!phoneState.isDirty || phoneState.invalid) return;
               if (!birthdayState.isDirty || birthdayState.invalid) return;

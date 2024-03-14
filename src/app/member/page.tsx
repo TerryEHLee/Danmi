@@ -6,34 +6,22 @@ import { Button } from "@/components/ui/button";
 import { AddMember } from "@/components/members/adding-member";
 import React, { useEffect, useState } from "react";
 
-async function getData(): Promise<Member[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "a001",
-      name: "은은한",
-      status: "회원",
-      joinDate: "24.03.13",
-      endDate: "24.12.13",
-      remainClass: "개인:1, 그룹:10",
-      tutor: "이연지T",
-      phoneNumber: "01012345656",
-      history: "24.03.13. 화 19:00 이연지T chair 그룹",
-    },
-  ];
-}
-
-const Member = () => {
+const MemberPage = () => {
   const [data, setData] = useState<Member[]>([]);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getData();
-      setData(result);
+      try {
+        const resp = await fetch("http://localhost:7777/memberInfo");
+        const memberInfo = await resp.json();
+        setData(memberInfo);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     }
     fetchData();
-  }, []);
+  }, [isBtnClicked]);
 
   function closeModal() {
     setIsBtnClicked(false);
@@ -56,4 +44,4 @@ const Member = () => {
   );
 };
 
-export default Member;
+export default MemberPage;
