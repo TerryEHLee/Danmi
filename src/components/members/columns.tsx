@@ -82,6 +82,41 @@ export const columns: ColumnDef<Member>[] = [
       const [remainClass, setRemainClass] = useState("");
       const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+      const updateRole = (role) => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ role }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("server", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      const updateClass = () => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ remainClass }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("server", data);
+            setIsDialogOpen(false);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
       const handleCouponRegistration = () => {
         fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
           method: "PATCH",
@@ -113,41 +148,6 @@ export const columns: ColumnDef<Member>[] = [
           .then((response) => {
             return response.json();
           })
-          .then((data) => {
-            console.log("server", data);
-            setIsDialogOpen(false);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      };
-
-      const updateRole = (role) => {
-        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ role }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("server", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      };
-
-      const updateClass = () => {
-        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ remainClass }),
-        })
-          .then((response) => response.json())
           .then((data) => {
             console.log("server", data);
             setIsDialogOpen(false);
