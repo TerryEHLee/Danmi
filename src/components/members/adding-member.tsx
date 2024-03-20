@@ -62,7 +62,6 @@ export function AddMember({
   const [showTutorForm, setShowTutorForm] = useState(false);
   const [members, setMembers] = useState<Member[]>([]);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
-  // const [selectedRole, setSelectedRole] = useState("");
 
   function onSubmit(data: RegisterInput) {
     const options = {

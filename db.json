@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "강동원",
-      "role": "회원",
+      "role": "강사",
       "joinDate": "24.03.13",
       "endDate": "24.12.13",
       "remainClass": "개인:1, 그룹:10",
@@ -16,11 +16,14 @@
     {
       "id": "e2cf",
       "phone": "01000000000",
-      "role": "회원",
+      "role": "만료회원",
       "username": "terry",
       "birthday": "111110",
       "gender": "male",
-      "tutor": "이연지T"
+      "tutor": "이연지T",
+      "coupon": "13",
+      "point": "12",
+      "remainClass": "그룹: 20"
     },
     {
       "id": "011b",
@@ -32,73 +35,10 @@
       "tutor": "이연지T",
       "joinDate": "",
       "endDate": "",
-      "remainClass": "",
-      "history": ""
-    },
-    {
-      "id": "42ed",
-      "phone": "01000000000",
-      "role": "회원",
-      "username": "terryehlee",
-      "birthday": "111110",
-      "gender": "male",
-      "tutor": "이연지T",
-      "joinDate": "",
-      "endDate": "",
-      "remainClass": "",
-      "history": ""
-    },
-    {
-      "id": "b836",
-      "phone": "01000000000",
-      "role": "회원",
-      "username": "꼬부기",
-      "birthday": "111110",
-      "gender": "female",
-      "tutor": "이연지T",
-      "joinDate": "",
-      "endDate": "",
-      "remainClass": "",
-      "history": ""
-    },
-    {
-      "id": "de75",
-      "phone": "01000000000",
-      "role": "강사",
-      "username": "왕예삐",
-      "birthday": "111110",
-      "gender": "male",
-      "tutor": "",
-      "joinDate": "",
-      "endDate": "",
-      "remainClass": "",
-      "history": ""
-    },
-    {
-      "id": "59c3",
-      "phone": "01000000000",
-      "role": "회원",
-      "username": "afd",
-      "birthday": "111110",
-      "gender": "male",
-      "tutor": "이연지T",
-      "joinDate": "",
-      "endDate": "",
-      "remainClass": "",
-      "history": ""
-    },
-    {
-      "id": "2944",
-      "phone": "01000000000",
-      "role": "회원",
-      "username": "이름",
-      "birthday": "111110",
-      "gender": "female",
-      "tutor": "이연지T",
-      "joinDate": "",
-      "endDate": "",
-      "remainClass": "",
-      "history": ""
+      "remainClass": "개인: 12",
+      "history": "",
+      "coupon": "11",
+      "point": "1888"
     }
   ]
 }
