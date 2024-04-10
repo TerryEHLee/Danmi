@@ -78,28 +78,95 @@ export const columns: ColumnDef<Member>[] = [
       const payment = row.original;
       const [selectedRole, setSelectedRole] = useState("");
       const [coupon, setCoupon] = useState("");
+      const [point, setPoint] = useState("");
+      const [remainClass, setRemainClass] = useState("");
+      const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-      useEffect(() => {
-        if (coupon !== "") {
-          console.log("쿠폰 값 업데이트:", coupon);
-          fetch(`http://localhost:7777/memberInfo`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ coupon }),
+      const updateRole = (role) => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ role }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("server", data);
           })
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              console.log("server", data);
-            });
-        }
-      }, [coupon]);
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      const updateClass = () => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ remainClass }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("server", data);
+            setIsDialogOpen(false);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
 
       const handleCouponRegistration = () => {
-        setCoupon("쿠폰 등록됨");
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ coupon }),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("server", data);
+            setIsDialogOpen(false);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      const handlePointRegistration = () => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ point }),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("server", data);
+            setIsDialogOpen(false);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      const handleCouponChange = (event) => {
+        setCoupon(event.target.value);
+      };
+
+      const handlePointChange = (event) => {
+        setPoint(event.target.value);
+      };
+
+      const handleClassChange = (event) => {
+        setRemainClass(event.target.value);
       };
 
       return (
@@ -123,6 +190,7 @@ export const columns: ColumnDef<Member>[] = [
                   <Select
                     onValueChange={(value) => {
                       setSelectedRole(value);
+                      updateRole(value);
                     }}
                   >
                     <SelectTrigger className="w-[180px]">
@@ -144,7 +212,14 @@ export const columns: ColumnDef<Member>[] = [
                   </DropdownMenuItem>
                 </DialogTrigger>
                 <DialogContent>
-                  <Input placeholder="부여할 수업을 입력하세요" />
+                  <Input
+                    placeholder="부여할 수업을 입력하세요"
+                    onChange={handleClassChange}
+                    value={remainClass}
+                  />
+                  <Button variant="outline" onClick={updateClass}>
+                    회원권등록
+                  </Button>
                 </DialogContent>
               </Dialog>
 
@@ -155,7 +230,11 @@ export const columns: ColumnDef<Member>[] = [
                   </DropdownMenuItem>
                 </DialogTrigger>
                 <DialogContent>
-                  <Input placeholder="부여할 쿠폰값을 입력하세요" />
+                  <Input
+                    placeholder="부여할 쿠폰값을 입력하세요"
+                    onChange={handleCouponChange}
+                    value={coupon}
+                  />
                   <Button variant="outline" onClick={handleCouponRegistration}>
                     쿠폰등록
                   </Button>
@@ -169,7 +248,14 @@ export const columns: ColumnDef<Member>[] = [
                   </DropdownMenuItem>
                 </DialogTrigger>
                 <DialogContent>
-                  <Input placeholder="부여할 포인트를 입력하세요" />
+                  <Input
+                    placeholder="부여할 포인트를 입력하세요"
+                    onChange={handlePointChange}
+                    value={point}
+                  />
+                  <Button variant="outline" onClick={handlePointRegistration}>
+                    포인트부여
+                  </Button>
                 </DialogContent>
               </Dialog>
             </DropdownMenuContent>
