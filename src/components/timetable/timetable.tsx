@@ -31,9 +31,6 @@ export default function Timetable() {
         //   { id: "b", title: "Auditorium B", eventColor: "green" },
         //   { id: "c", title: "Auditorium C", eventColor: "orange" },
         // ]}
-        initialEvents={[
-          { title: "nice event", start: new Date(), resourceId: "a" },
-        ]}
       />
     </div>
   );
