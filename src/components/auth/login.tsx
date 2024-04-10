@@ -37,6 +37,31 @@ export function Login() {
     },
   });
 
+  const loginHandler = async (name: string, password: string) => {
+    try {
+      const response = await fetch("http://localhost:4000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Origin: "http://localhost:3000",
+        },
+        body: JSON.stringify({
+          id: name,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        alert("로그인 성공!");
+      } else {
+        alert("이름 또는 비밀번호가 일치하지 않습니다.");
+      }
+    } catch (error) {
+      console.error("로그인 에러:", error);
+      alert("로그인 중 오류가 발생했습니다.");
+    }
+  };
+
   function onSubmit(data: LoginInput) {
     form.trigger(["name", "password"]);
 
@@ -49,7 +74,7 @@ export function Login() {
       passwordState.isDirty &&
       !passwordState.invalid
     ) {
-      alert(JSON.stringify(data, null, 4));
+      loginHandler(data.name, data.password);
     }
   }
 

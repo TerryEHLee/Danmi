@@ -16,14 +16,14 @@
     {
       "id": "e2cf",
       "phone": "01000000000",
-      "role": "만료회원",
+      "role": "강사",
       "username": "terry",
       "birthday": "111110",
       "gender": "male",
       "tutor": "이연지T",
-      "coupon": "13",
-      "point": "12",
-      "remainClass": "그룹: 20"
+      "coupon": "113",
+      "point": "10000",
+      "remainClass": "개인: 10"
     },
     {
       "id": "011b",
