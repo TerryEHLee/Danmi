@@ -5,7 +5,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import Modal from "react-modal";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -14,14 +14,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { set } from "date-fns";
-import { AlignJustify } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { z } from "zod";
+import Modal from "react-modal";
+import ReactSelect from "react-select";
 
 export default function Timetable() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const options = [
+    { value: "light", label: "Light" },
+    { value: "dark", label: "Dark" },
+    { value: "system", label: "System" },
+  ];
   return (
-    <div className="calendar-container">
+    <div className="calendar-container" style={{ zIndex: -1 }}>
       <FullCalendar
         plugins={[
           resourceTimelinePlugin,
@@ -39,8 +51,6 @@ export default function Timetable() {
         editable={true}
         selectable={true}
         selectMirror={true}
-        // slotDuration="01:00:00"
-
         slotMinTime="09:00:00"
         slotMaxTime="23:00:00"
         allDaySlot={false}
@@ -60,22 +70,36 @@ export default function Timetable() {
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
-            zIndex: 9999,
+            zIndex: 199,
           }}
         >
           <Card
             style={{
-              justifyContent: "center",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               position: "relative",
+              overflow: "visible",
             }}
           >
             <CardHeader>
-              <CardTitle>Hello</CardTitle>
+              <CardTitle>New Class</CardTitle>
             </CardHeader>
             <CardContent>
-              <CardDescription>Some description here...</CardDescription>
+              <Badge>수업형태: 1:1 | 2:1 | 4:1</Badge>
+              <Badge>Teacher</Badge>
+              <Badge>Room</Badge>
+
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="수업형태" />
+                </SelectTrigger>
+                <SelectContent style={{ zIndex: 10000 }}>
+                  <SelectItem value="light">private</SelectItem>
+                  <SelectItem value="dark">duet</SelectItem>
+                  <SelectItem value="system">Grop</SelectItem>
+                </SelectContent>
+              </Select>
             </CardContent>
             <CardFooter>
               <button onClick={() => setModalIsOpen(false)}>Close</button>
@@ -83,34 +107,6 @@ export default function Timetable() {
           </Card>
         </div>
       )}
-
-      {/* <Modal
-        isOpen={modalIsOpen}
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          },
-          content: {
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-50%, -50%)",
-            background: "#fff",
-            overflow: "auto",
-            WebkitOverflowScrolling: "touch",
-            borderRadius: "4px",
-            outline: "none",
-            padding: "20px",
-          },
-        }}
-        onRequestClose={() => setModalIsOpen(false)}
-            >
-        <h2>Hello</h2>
-        <button onClick={() => setModalIsOpen(false)}>Close</button>
-            </Modal> */}
     </div>
   );
 }
