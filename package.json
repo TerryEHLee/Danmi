@@ -14,6 +14,7 @@
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/resource": "^6.1.11",
     "@fullcalendar/resource-timeline": "^6.1.11",
+    "@fullcalendar/rrule": "^6.1.11",
     "@hookform/resolvers": "^3.3.4",
     "@nestjs/common": "^10.3.5",
     "@nestjs/core": "^10.3.5",

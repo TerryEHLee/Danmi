@@ -6,6 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -21,17 +22,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { z } from "zod";
-import Modal from "react-modal";
-import ReactSelect from "react-select";
+import rrulePlugin from "@fullcalendar/rrule";
 
 export default function Timetable() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const options = [
-    { value: "light", label: "Light" },
-    { value: "dark", label: "Dark" },
-    { value: "system", label: "System" },
-  ];
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
   return (
     <div className="calendar-container" style={{ zIndex: -1 }}>
       <FullCalendar
@@ -58,6 +53,7 @@ export default function Timetable() {
         select={() => setModalIsOpen(true)}
       />
 
+      {selectedValue && <div className="selected-value">{selectedValue}</div>}
       {modalIsOpen && (
         <div
           style={{
@@ -86,23 +82,43 @@ export default function Timetable() {
               <CardTitle>New Class</CardTitle>
             </CardHeader>
             <CardContent>
-              <Badge>수업형태: 1:1 | 2:1 | 4:1</Badge>
-              <Badge>Teacher</Badge>
-              <Badge>Room</Badge>
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="ClassForm" />
+                </SelectTrigger>
+                <SelectContent style={{ zIndex: 10000 }}>
+                  <SelectItem value="privateClass">Private</SelectItem>
+                  <SelectItem value="duetClass">Duet</SelectItem>
+                  <SelectItem value="groupClass">Grop</SelectItem>
+                </SelectContent>
+              </Select>
 
               <Select>
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="수업형태" />
+                  <SelectValue placeholder="Teacher" />
                 </SelectTrigger>
                 <SelectContent style={{ zIndex: 10000 }}>
-                  <SelectItem value="light">private</SelectItem>
-                  <SelectItem value="dark">duet</SelectItem>
-                  <SelectItem value="system">Grop</SelectItem>
+                  <SelectItem value="yj">연지T</SelectItem>
+                  <SelectItem value="ej">은지T</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Room" />
+                </SelectTrigger>
+                <SelectContent style={{ zIndex: 10000 }}>
+                  <SelectItem value="privateRoom">Private</SelectItem>
+                  <SelectItem value="chairRoom">Chair</SelectItem>
+                  <SelectItem value="combiRoom">Combi</SelectItem>
                 </SelectContent>
               </Select>
             </CardContent>
             <CardFooter>
-              <button onClick={() => setModalIsOpen(false)}>Close</button>
+              <Button> Create </Button>
+              <Button variant="secondary" onClick={() => setModalIsOpen(false)}>
+                Close
+              </Button>
             </CardFooter>
           </Card>
         </div>
