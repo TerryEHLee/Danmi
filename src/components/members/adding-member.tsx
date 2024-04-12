@@ -48,7 +48,7 @@ export function AddMember({
     defaultValues: {
       phone: "",
       role: "",
-      username: "",
+      name: "",
       birthday: "",
       gender: "",
       tutor: "",
@@ -101,7 +101,7 @@ export function AddMember({
               <div className="grid w-full items-center gap-4">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>이름</FormLabel>
@@ -232,7 +232,7 @@ export function AddMember({
               form.trigger([
                 "phone",
                 "birthday",
-                "username",
+                "name",
                 "role",
                 "gender",
                 "tutor",
@@ -240,14 +240,14 @@ export function AddMember({
 
               const phoneState = form.getFieldState("phone");
               const birthdayState = form.getFieldState("birthday");
-              const usernameState = form.getFieldState("username");
+              const nameState = form.getFieldState("name");
               const roleState = form.getFieldState("role");
               const genderState = form.getFieldState("gender");
               const joinDateState = "";
 
               if (!phoneState.isDirty || phoneState.invalid) return;
               if (!birthdayState.isDirty || birthdayState.invalid) return;
-              if (!usernameState.isDirty || usernameState.invalid) return;
+              if (!nameState.isDirty || nameState.invalid) return;
               if (!roleState.isDirty || roleState.invalid) return;
               if (!genderState.isDirty || genderState.invalid) return;
 

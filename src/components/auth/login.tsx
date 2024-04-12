@@ -41,9 +41,10 @@ export function Login() {
     try {
       const response = await fetch("http://localhost:4000/users/login", {
         method: "POST",
+        credentials: "include",
+
         headers: {
           "Content-Type": "application/json",
-          Origin: "http://localhost:3000",
         },
         body: JSON.stringify({
           id: name,
@@ -52,7 +53,10 @@ export function Login() {
       });
 
       if (response.ok) {
+        const result = await response.text();
         alert("로그인 성공!");
+        localStorage.setItem("Authorization", result);
+        window.location.href = "/timetable";
       } else {
         alert("이름 또는 비밀번호가 일치하지 않습니다.");
       }
