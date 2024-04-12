@@ -13,7 +13,19 @@ const MemberPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const resp = await fetch("http://localhost:7777/memberInfo");
+        const resp = await fetch(
+          "http://localhost:4000/users/signup",
+
+          {
+            method: "POST",
+            credentials: "include",
+
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: localStorage.getItem("Authorization"),
+            },
+          },
+        );
         const memberInfo = await resp.json();
         setData(memberInfo);
       } catch (error) {

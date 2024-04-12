@@ -2,7 +2,7 @@
   "memberInfo": [
     {
       "id": "1",
-      "username": "강동원",
+      "name": "강동원",
       "role": "강사",
       "joinDate": "24.03.13",
       "endDate": "24.12.13",
@@ -17,7 +17,7 @@
       "id": "e2cf",
       "phone": "01000000000",
       "role": "강사",
-      "username": "terry",
+      "name": "terry",
       "birthday": "111110",
       "gender": "male",
       "tutor": "이연지T",
@@ -29,7 +29,7 @@
       "id": "011b",
       "phone": "01000000000",
       "role": "회원",
-      "username": "피카",
+      "name": "피카",
       "birthday": "111110",
       "gender": "female",
       "tutor": "이연지T",

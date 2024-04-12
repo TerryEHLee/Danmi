@@ -48,9 +48,9 @@ export default function RootLayout({
             </div>
           </ThemeProvider>
           <div className="mt-10 ml-6">{children}</div>
-          <footer className="fixed bottom-0 mb-10 ml-6">
+          {/* <footer className="fixed bottom-0 mb-10 ml-6">
             <Footer />
-          </footer>
+          </footer> */}
         </body>
       </html>
     </>

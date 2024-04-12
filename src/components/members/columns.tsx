@@ -24,15 +24,17 @@ import { Input } from "@/components/ui/input";
 
 export type Member = {
   id: string;
-  username: string;
-  birthday: string;
-  role: "회원" | "만료회원" | "강사";
-  joinDate: string;
-  endDate: string;
-  remainClass: string;
-  tutor: "이연지T" | "이은지T";
+  name: string;
   phone: string;
-  history: string;
+  password: string; //생년월일
+  mainTutor: string;
+  type: "admin" | "tutor" | "member";
+  credit: 0;
+  // role: "회원" | "만료회원" | "강사";
+  // joinDate: string;
+  // endDate: string;
+  // remainClass: string;
+  // history: string;
 };
 
 interface ColumnsProps {
@@ -45,7 +47,7 @@ export const columns: ColumnDef<Member>[] = [
     header: "구분",
   },
   {
-    accessorKey: "username",
+    accessorKey: "name",
     header: "이름",
   },
   {

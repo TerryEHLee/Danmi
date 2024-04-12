@@ -12,7 +12,7 @@ export const registerSchema = z.object({
       (value) => phoneRegex.test(value),
       "010으로 시작하는 11자리 숫자를 입력해주세요",
     ),
-  username: z
+  name: z
     .string()
     .min(2, { message: "이름은 2글자 이상이어야 합니다." })
     .max(100, { message: "이름은 100글자 이하이어야 합니다." }),
