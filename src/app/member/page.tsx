@@ -10,31 +10,6 @@ const MemberPage = () => {
   const [data, setData] = useState<Member[]>([]);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const resp = await fetch(
-          "http://localhost:4000/users/signup",
-
-          {
-            method: "POST",
-            credentials: "include",
-
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: localStorage.getItem("Authorization"),
-            },
-          },
-        );
-        const memberInfo = await resp.json();
-        setData(memberInfo);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    fetchData();
-  }, [isBtnClicked]);
-
   function closeModal() {
     setIsBtnClicked(false);
   }

@@ -22,7 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import rrulePlugin from "@fullcalendar/rrule";
 
 export default function Timetable() {
   const [modalIsOpen, setModalIsOpen] = useState(false);

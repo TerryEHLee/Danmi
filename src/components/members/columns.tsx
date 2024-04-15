@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -84,7 +85,7 @@ export const columns: ColumnDef<Member>[] = [
       const [remainClass, setRemainClass] = useState("");
       const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-      const updateRole = (role) => {
+      const updateRole = (role: string) => {
         fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
           method: "PATCH",
           headers: {
@@ -159,15 +160,15 @@ export const columns: ColumnDef<Member>[] = [
           });
       };
 
-      const handleCouponChange = (event) => {
+      const handleCouponChange = (event: any) => {
         setCoupon(event.target.value);
       };
 
-      const handlePointChange = (event) => {
+      const handlePointChange = (event: any) => {
         setPoint(event.target.value);
       };
 
-      const handleClassChange = (event) => {
+      const handleClassChange = (event: any) => {
         setRemainClass(event.target.value);
       };
 
