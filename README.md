@@ -3,7 +3,7 @@
 2. 운영관리 (매출관리, 회원결제내역관리, 수업권부여 ...)
 3. 시간표관리 (수업등록, 회원예약 ...)
 
-## Wireframe
+## Wireframe
 (https://www.figma.com/file/qVWaJT5EU1p91Qtgahw7Su/Danmi?type=design&node-id=0-1&mode=design&t=kUCqVNAo9BrNrNYR-0)
 
 ## 개발일정
@@ -17,10 +17,10 @@
 06: 디자인 적용
 
 
-## 개발인원:
+## 개발인원
 FE 1인, BE 1인, 디자이너 1인 (3인)
 
-## 기술스택:
+## 기술스택
 next.js, typescript, Nest.js, Postgres
 
 ## MVP 스팩
