@@ -10,19 +10,6 @@ const MemberPage = () => {
   const [data, setData] = useState<Member[]>([]);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const resp = await fetch("http://localhost:7777/memberInfo");
-        const memberInfo = await resp.json();
-        setData(memberInfo);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    fetchData();
-  }, [isBtnClicked]);
-
   function closeModal() {
     setIsBtnClicked(false);
   }

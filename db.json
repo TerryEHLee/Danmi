@@ -2,7 +2,7 @@
   "memberInfo": [
     {
       "id": "1",
-      "username": "강동원",
+      "name": "강동원",
       "role": "강사",
       "joinDate": "24.03.13",
       "endDate": "24.12.13",
@@ -16,20 +16,20 @@
     {
       "id": "e2cf",
       "phone": "01000000000",
-      "role": "만료회원",
-      "username": "terry",
+      "role": "강사",
+      "name": "terry",
       "birthday": "111110",
       "gender": "male",
       "tutor": "이연지T",
-      "coupon": "13",
-      "point": "12",
-      "remainClass": "그룹: 20"
+      "coupon": "113",
+      "point": "10000",
+      "remainClass": "개인: 10"
     },
     {
       "id": "011b",
       "phone": "01000000000",
       "role": "회원",
-      "username": "피카",
+      "name": "피카",
       "birthday": "111110",
       "gender": "female",
       "tutor": "이연지T",

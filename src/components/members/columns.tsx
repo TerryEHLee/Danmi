@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -24,15 +25,17 @@ import { Input } from "@/components/ui/input";
 
 export type Member = {
   id: string;
-  username: string;
-  birthday: string;
-  role: "회원" | "만료회원" | "강사";
-  joinDate: string;
-  endDate: string;
-  remainClass: string;
-  tutor: "이연지T" | "이은지T";
+  name: string;
   phone: string;
-  history: string;
+  password: string; //생년월일
+  mainTutor: string;
+  type: "admin" | "tutor" | "member";
+  credit: 0;
+  // role: "회원" | "만료회원" | "강사";
+  // joinDate: string;
+  // endDate: string;
+  // remainClass: string;
+  // history: string;
 };
 
 interface ColumnsProps {
@@ -45,7 +48,7 @@ export const columns: ColumnDef<Member>[] = [
     header: "구분",
   },
   {
-    accessorKey: "username",
+    accessorKey: "name",
     header: "이름",
   },
   {
@@ -81,6 +84,41 @@ export const columns: ColumnDef<Member>[] = [
       const [point, setPoint] = useState("");
       const [remainClass, setRemainClass] = useState("");
       const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+      const updateRole = (role: string) => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ role }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("server", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      const updateClass = () => {
+        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ remainClass }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("server", data);
+            setIsDialogOpen(false);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
 
       const handleCouponRegistration = () => {
         fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
@@ -122,50 +160,15 @@ export const columns: ColumnDef<Member>[] = [
           });
       };
 
-      const updateRole = (role) => {
-        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ role }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("server", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      };
-
-      const updateClass = () => {
-        fetch(`http://localhost:7777/memberInfo/${payment.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ remainClass }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("server", data);
-            setIsDialogOpen(false);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      };
-
-      const handleCouponChange = (event) => {
+      const handleCouponChange = (event: any) => {
         setCoupon(event.target.value);
       };
 
-      const handlePointChange = (event) => {
+      const handlePointChange = (event: any) => {
         setPoint(event.target.value);
       };
 
-      const handleClassChange = (event) => {
+      const handleClassChange = (event: any) => {
         setRemainClass(event.target.value);
       };
 
